@@ -10,7 +10,7 @@ spring:
           password: gzc15527185733
 #          basedir: G:\edu\cczhilie\springCloud-Cell\config-basedir
   rabbitmq:
-    host: 127.0.0.1
+    host: 192.168.1.103
     port: 5672
     username: guest
     password: guest
@@ -18,11 +18,16 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8762/eureka/
-      instance:
-        prefer-ip-address: true
+      defaultZone: http://192.168.1.103:8762/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.1.103
+    instance-id: ${eureka.instance.ip-address}:${server.port}
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+
+server:
+  port: 8080
